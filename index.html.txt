@@ -1,0 +1,204 @@
+<!--
+Single-file professional portfolio (HTML/CSS/JS).
+How to use:
+1. Copy this file and save as `index.html`.
+2. Open locally in a browser to view.
+3. To host free: push to GitHub and enable GitHub Pages, or upload to Netlify/Vercel.
+
+If you want me to customize (your name, bio, links, projects, images), tell me the details and I'll update.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Professional portfolio — projects, about, contact." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent1:#6ee7b7; --accent2:#60a5fa;
+      --glass: rgba(255,255,255,0.04);
+      --radius:16px;
+      --container:1100px;
+      color-scheme: dark;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.06), transparent 6%),
+                         radial-gradient(1000px 500px at 90% 90%, rgba(110,231,183,0.03), transparent 6%),
+                         var(--bg);
+      color:#e6eef7; -webkit-font-smoothing:antialiased; padding:40px 20px; display:flex; justify-content:center;
+    }
+    .wrap{width:100%; max-width:var(--container)}
+
+    /* header */
+    header{display:flex; justify-content:space-between; align-items:center; gap:20px}
+    .brand{display:flex; gap:14px; align-items:center}
+    .logo{width:54px; height:54px; border-radius:12px; background:linear-gradient(135deg,var(--accent1),var(--accent2)); display:grid; place-items:center; font-weight:700}
+    nav a{color:var(--muted); text-decoration:none; margin-left:18px}
+    nav a:hover{color:#fff}
+
+    /* hero */
+    .hero{display:grid; grid-template-columns:1fr 420px; gap:36px; align-items:center; margin-top:36px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:var(--radius); padding:28px; box-shadow:0 8px 30px rgba(2,6,23,0.6); backdrop-filter: blur(6px)}
+    h1{font-size:36px; margin:0 0 8px}
+    .lead{color:var(--muted); margin:0 0 18px}
+    .cta{display:inline-block; padding:10px 16px; border-radius:12px; background:linear-gradient(90deg,var(--accent2),var(--accent1)); color:#04202a; font-weight:600; text-decoration:none}
+
+    /* animated code-like tag */
+    .tagline{font-family:monospace; font-size:13px; color:#8b9aa8; display:inline-block; padding:8px 12px; background:var(--glass); border-radius:10px}
+    .skills{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .skill{font-size:13px; color:var(--muted); padding:6px 10px; background:rgba(255,255,255,0.02); border-radius:999px}
+
+    /* right column — profile card */
+    .profile{display:flex; flex-direction:column; gap:16px}
+    .avatar{width:100%; height:240px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden}
+    .pulse{width:160px; height:160px; border-radius:50%; background:linear-gradient(135deg,var(--accent1),var(--accent2)); display:grid; place-items:center; font-weight:700; font-size:28px; color:#04202a; animation:pulse 2.4s infinite}
+    @keyframes pulse{0%{transform:scale(1); filter:blur(0)}50%{transform:scale(1.06); filter:blur(1px)}100%{transform:scale(1); filter:blur(0)}}
+
+    /* projects */
+    .projects{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:28px}
+    .project{padding:16px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent); transition:transform .28s ease, box-shadow .28s ease}
+    .project:hover{transform:translateY(-8px); box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+    .project h3{margin:0 0 6px}
+    .muted{color:var(--muted)}
+
+    /* contact */
+    footer{margin-top:40px; display:flex; gap:20px; align-items:center; justify-content:space-between}
+    .socials a{margin-left:10px; color:var(--muted); text-decoration:none}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .projects{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:560px){
+      header{flex-direction:column; align-items:flex-start}
+      .projects{grid-template-columns:1fr}
+      .avatar{height:180px}
+    }
+
+    /* subtle animated gradient underline */
+    .animated-underline{background:linear-gradient(90deg, transparent, rgba(96,165,250,0.12), transparent); background-size:200% 100%; background-position:0% 50%; animation:underline-slide 3s linear infinite}
+    @keyframes underline-slide{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">YN</div>
+        <div>
+          <div style="font-weight:700">Your Name</div>
+          <div style="font-size:13px; color:var(--muted)">Frontend Developer • Video Editor • Designer</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <div class="tagline">&lt;Hello /&gt; Building clean digital experiences</div>
+        <h1 class="animated-underline">Hi, I'm <span style="color:var(--accent1)">Your Name</span></h1>
+        <p class="lead">I make beautiful, performant websites and short-form videos that help brands tell their story. I blend design, animation and code for polished results.</p>
+        <a class="cta" href="#work">See my work</a>
+
+        <div class="skills">
+          <div class="skill">HTML</div>
+          <div class="skill">CSS / Animations</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">React</div>
+          <div class="skill">Video Editing</div>
+        </div>
+
+        <div style="margin-top:18px; display:flex; gap:12px; align-items:center">
+          <div style="width:46px; height:46px; border-radius:10px; background:var(--glass); display:grid; place-items:center">📄</div>
+          <div>
+            <div style="font-size:13px; color:var(--muted)">Download CV</div>
+            <div style="font-weight:600">PDF available on request</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="profile">
+        <div class="card avatar">
+          <div class="pulse">YN</div>
+        </div>
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center">
+            <div>
+              <div style="font-weight:700">Contact</div>
+              <div class="muted" style="font-size:13px">your.email@example.com</div>
+            </div>
+            <div style="text-align:right">
+              <div class="muted" style="font-size:13px">Based in India</div>
+              <div style="font-weight:700">Open to work</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="display:flex; gap:10px; justify-content:center">
+          <a class="cta" href="#contact">Hire Me</a>
+          <a class="cta" href="#work" style="background:transparent; color:var(--accent1); border:1px solid rgba(255,255,255,0.06)">Projects</a>
+        </div>
+      </aside>
+    </section>
+
+    <section id="work" class="projects">
+      <div class="project card">
+        <h3>Project One</h3>
+        <div class="muted">Landing page + animations</div>
+        <p style="margin-top:8px; font-size:14px" class="muted">Short description. Tools: HTML, CSS, JS.</p>
+      </div>
+
+      <div class="project card">
+        <h3>Project Two</h3>
+        <div class="muted">Short video series</div>
+        <p style="margin-top:8px; font-size:14px" class="muted">Short description. Tools: Premiere, After Effects.</p>
+      </div>
+
+      <div class="project card">
+        <h3>Project Three</h3>
+        <div class="muted">Interactive UI</div>
+        <p style="margin-top:8px; font-size:14px" class="muted">Short description. Tools: React, Framer Motion.</p>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="card" style="flex:1">
+        <div style="font-weight:700">Let's work together</div>
+        <div class="muted" style="margin-top:6px">Want the same look for your portfolio? Email me or use the link below.</div>
+        <div style="margin-top:12px">
+          <a href="mailto:your.email@example.com" class="cta">Email Me</a>
+        </div>
+      </div>
+
+      <div style="width:220px" class="card socials muted">
+        <div style="font-weight:700">Find me</div>
+        <div style="margin-top:10px">LinkedIn • GitHub • Instagram</div>
+      </div>
+    </footer>
+
+    <div style="text-align:center; color:var(--muted); margin-top:16px; font-size:13px">Built with ❤️ — Editable single-file template</div>
+  </div>
+
+  <script>
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+  </script>
+</body>
+</html>
